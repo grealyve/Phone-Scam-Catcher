@@ -1,14 +1,21 @@
 package com.phoneScamCatcher.scatcher.controller;
 
+import com.phoneScamCatcher.scatcher.contracts.Src_main_resources_solidity_PhoneScamCatcher_sol_PhoneNumberReport;
 import com.phoneScamCatcher.scatcher.entity.User;
+import com.phoneScamCatcher.scatcher.service.ContractService;
 import com.phoneScamCatcher.scatcher.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.web3j.crypto.Credentials;
+import org.web3j.protocol.Web3j;
 
 @Controller
 public class UserController {
+    private final ContractService contractService = new ContractService();
+    private final Credentials contractCredentials = contractService.getCredentialsFromPrivateKey();
+
     @Autowired
     private UsersService usersService;
 
@@ -46,4 +53,21 @@ public class UserController {
         }else
             return "Failed to login";
     }
+
+    @GetMapping("/report")
+    public String getReportPage(){
+        return "report_page";
+    }
+
+    @PostMapping("/report")
+    public String reportNumber(Model model){
+        model.addAttribute("reportNumber");
+        Src_main_resources_solidity_PhoneScamCatcher_sol_PhoneNumberReport phoneNumberReport = contractService
+                .loadContract(contractService.getCONTRACT_ADDRESS(),
+                        contractService.getWeb3j(), contractCredentials);
+
+        
+        return "A number has been reported: ";
+    }
+
 }

@@ -3,6 +3,7 @@ package com.phoneScamCatcher.scatcher;
 import com.phoneScamCatcher.scatcher.contracts.Src_main_resources_solidity_PhoneScamCatcher_sol_PhoneNumberReport;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.web3j.abi.datatypes.Type;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.DefaultBlockParameterName;
@@ -17,6 +18,7 @@ import org.web3j.tx.response.TransactionReceiptProcessor;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Flow;
 
 @SpringBootApplication
@@ -26,7 +28,7 @@ public class ScatcherApplication {
 	private final static BigInteger GAS_LIMIT = BigInteger.valueOf(6721975L);
 	private final static BigInteger GAS_PRICE = BigInteger.valueOf(20000000000L);
 	private final static BigInteger TIMEPERIOD = BigInteger.valueOf(84600);
-	private final static String CONTRACT_ADDRESS = "0x47B71671Ce6E89BD7b3bE8f09ed03fF8FF84BB98";
+	private final static String CONTRACT_ADDRESS = "0xc6296CF9af63cb1E1a443F1B924485A9aF2ca787";
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(ScatcherApplication.class, args);
@@ -42,23 +44,25 @@ public class ScatcherApplication {
 
 		Src_main_resources_solidity_PhoneScamCatcher_sol_PhoneNumberReport phoneScamCatcher = loadContract(CONTRACT_ADDRESS, web3j, credentials);
 		System.out.println("---------Deployed contract address-----------: "+ phoneScamCatcher.getContractAddress());
-		String phoneNumber = "123456789";
+		String phoneNumber = "987654321";
 
 		TransactionReceipt transactionReceipt = phoneScamCatcher.reportNumber(phoneNumber).send();
 		System.out.println(transactionReceipt.getTransactionHash());
+
+		phoneScamCatcher.reportNumber("123456789").send();
 		//List<Log> logs = transactionReceipt.getLogs();
 		//System.out.println(logs.toString());
 
 		System.out.println(transactionReceipt.getBlockNumber());
 		System.out.println("----------");
 
-		TransactionReceipt transactionReceipt1 = phoneScamCatcher.reportNumber(phoneNumber).send();
-		System.out.println(transactionReceipt1.toString());
+//		TransactionReceipt transactionReceipt1 = phoneScamCatcher.reportNumber(phoneNumber).send();
+//		System.out.println(transactionReceipt1.toString());
 
-		phoneScamCatcher.reportNumber(phoneNumber);
-		phoneScamCatcher.reportNumber(phoneNumber);
+//		phoneScamCatcher.reportNumber(phoneNumber).send();
+//		phoneScamCatcher.reportNumber(phoneNumber).sendAsync();
 
-		BigInteger bigInteger = phoneScamCatcher.checkReports(phoneNumber).send();
+		CompletableFuture<BigInteger> bigInteger = phoneScamCatcher.checkReports(phoneNumber).sendAsync();
 		System.out.println(bigInteger.toString());
 	}
 
