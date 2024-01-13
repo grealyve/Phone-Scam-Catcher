@@ -12,6 +12,7 @@ This is a blockchain project based on Java Spring backend and stores the user da
 ````
 
 ## Table of Contents
+- [Features](#features)
 - [Model](#model)
 - [Installation](#installation)
 - [Web Page Endpoints](#web-page-endpoints)
@@ -22,6 +23,13 @@ This is a blockchain project based on Java Spring backend and stores the user da
 - [Examples](#examples)
 - [MySql Connection Properties](#mysql-properties)
 - [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- User registration and login
+- Reporting and checking phone numbers for scams
+- Integration with Ethereum blockchain for secure reporting
 
 ## Model
 This is model diagram of our project. 
@@ -171,5 +179,14 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 ````
 
+## Ethereum Smart Contract
+The application uses an Ethereum smart contract for securely storing and retrieving reported phone numbers. The smart contract is written in Solidity and is available in the `src/main/resources/solidity/` directory.
+
 ## Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvement, please feel free to create an issue or submit a pull request.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+```shell
+Make sure to customize the placeholders such as `your-username`, add more details about the project's structure, dependencies, and any other relevant information. Additionally, consider adding sections like "Deployment" or "Troubleshooting" based on your project's needs.
+```
