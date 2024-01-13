@@ -3,10 +3,10 @@
   <a href="https://i.hizliresim.com/plib7pk.png"><img src="static/nuclei-logo.png" width="200px" ></a>
 </h1>
 
-<h4 align="center">Reporting and checking scammer phone number tool based on decentralized network.</h4>
+<h4 align="center">Reporting and checking scammer phone number tool based on blockchain.</h4>
 
 # Phone-Scam-Catcher
-Blockchain project based on Java Spring backend and stores the user data in a MySql server. 
+Blockchain project based on Java Spring backend and stores the user data in a MySql server.
 
 ````powershell
   .   ____          _            __ _ _
@@ -26,13 +26,13 @@ Blockchain project based on Java Spring backend and stores the user data in a My
   <a href="#build">Build</a> •
   <a href="#web-page-endpoints">Web Page Endpoints</a> •
   <a href="#examples">Examples</a> •
-  <a href="#mysql-properties">MySql Connection</a> •
+  <a href="#mysql-properties">MySql Connection Properties</a> •
   <a href="#contributing">Contributing</a> •
   <a href="#license">License</a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/grealyve/Phone-Scam-Catcher/README_TR.md">Turkish</a>
+  <a href="https://github.com/grealyve/Phone-Scam-Catcher/README.md">English</a>
 </p>
 
 ---
@@ -44,7 +44,7 @@ Blockchain project based on Java Spring backend and stores the user data in a My
 - Integration with Ethereum blockchain for secure reporting
 
 ## Model
-This is model diagram of our project. 
+This is model diagram of our project.
 
 ## Install
 This project requires Java 21.
@@ -87,7 +87,7 @@ $ web3j generate solidity -b .\src\main\resources\out\src_main_resources_solidit
 ```java
 implementation 'org.web3j:core:4.10.0'
 ```
-- To visualize and connect the contract with `Ganache` use this codes: 
+- To visualize and connect the contract with `Ganache` use this codes:
 ```bash
 $ truffle init
 Starting init...
@@ -178,11 +178,11 @@ Summary
 
 ### Ganache
 - Smart Contract
-![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/04457acc-728f-4e2e-a4c0-bed6157276bc)
-![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/b2cb7b27-dfd0-4086-98c4-25b3c4802285)
+  ![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/04457acc-728f-4e2e-a4c0-bed6157276bc)
+  ![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/b2cb7b27-dfd0-4086-98c4-25b3c4802285)
 
-- Example Written Block 
-![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/4a199fe6-6bdd-48f4-b2d9-13fd693e501f)
+- Example Written Block
+  ![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/4a199fe6-6bdd-48f4-b2d9-13fd693e501f)
 
 
 ## MySql Properties
