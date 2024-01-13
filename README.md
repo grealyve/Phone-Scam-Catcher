@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://i.hizliresim.com/plib7pk.png"><img src="static/nuclei-logo.png" width="200px" ></a>
+  <a href="https://github.com/grealyve/Phone-Scam-Catcher/static/PhoneScamCatcher.png"><img src="static/PhoneScamCatcher.jpg" width="200px" ></a>
 </h1>
 
 <h4 align="center">Reporting and checking scammer phone number tool based on decentralized network.</h4>

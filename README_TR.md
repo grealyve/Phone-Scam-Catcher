@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://i.hizliresim.com/plib7pk.png"><img src="static/nuclei-logo.png" width="200px" ></a>
+  <img src="static/PhoneScamCatcher.jpg" width="400px">
 </h1>
 
 <h4 align="center">Reporting and checking scammer phone number tool based on blockchain.</h4>
