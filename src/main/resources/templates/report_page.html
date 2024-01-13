@@ -5,13 +5,14 @@
     <title>Report a Number</title>
 </head>
 <body>
-    <form th:action="@{/report}" method="post" th:object="${reportNumber}">
-        <h2>Sign In</h2>
-        <div class="input-box">
-            <i class="fa fa-user" aria-hidden="true"></i>
-            <input type="text" name="phoneNumber" placeholder="Phone Number" required>
-        </div>
-        <button type="submit"> Register </button>
-    </form>
+<form th:action="@{/report}" method="post" th:object="${reportNumber}">
+    <h2>Report Page</h2>
+    <div class="input-box">
+        <i class="fa fa-user" aria-hidden="true"></i>
+        <!-- Use th:field to bind the input to the model attribute -->
+        <input type="text" th:field="*{reportedNumber}" pattern="[0-9]{10}" placeholder="Phone Number" title="Please enter a valid 10-digit phone number" required>
+    </div>
+    <button type="submit"> Report </button>
+</form>
 </body>
 </html>

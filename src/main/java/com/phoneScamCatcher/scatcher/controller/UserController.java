@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
 @Controller
 public class UserController {
@@ -19,55 +20,78 @@ public class UserController {
     @Autowired
     private UsersService usersService;
 
-    @GetMapping(path="")
-    public String sayHello(){
+    @GetMapping(path = "")
+    public String sayHello() {
         return "index";
     }
 
     @GetMapping("/register")
-    public String getRegisterPage(Model model){
+    public String getRegisterPage(Model model) {
         model.addAttribute("registerRequest", new User());
         return "register_page";
     }
 
     @PostMapping("/register")
     @ResponseBody
-    public String register(@ModelAttribute User user){
-        System.out.println("Register request: "+ user);
+    public String register(@ModelAttribute User user) {
+        System.out.println("Register request: " + user);
         User registeredUser = usersService.registerUser(user.getName(), user.getPassword(), user.getPhoneNumber());
         return registeredUser == null ? "error!" : "redirect:/login";
     }
 
     @GetMapping("/login")
-    public String getLoginPage(Model model){
+    public String getLoginPage(Model model) {
         model.addAttribute("loginRequest", new User());
         return "login_page";
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute User user){
+    public String login(@ModelAttribute User user) {
         User dbUser = usersService.authenticate(user.getPhoneNumber(), user.getPassword());
-        if (dbUser != null){
+        if (dbUser != null) {
             System.out.println("Successfully loginned" + user.getName());
             return "report_page";
-        }else
+        } else
             return "Failed to login";
     }
 
     @GetMapping("/report")
-    public String getReportPage(){
+    public String getReportPage(Model model) {
+        model.addAttribute("reportNumber", new ContractService());
         return "report_page";
     }
 
     @PostMapping("/report")
-    public String reportNumber(Model model){
-        model.addAttribute("reportNumber");
-        Src_main_resources_solidity_PhoneScamCatcher_sol_PhoneNumberReport phoneNumberReport = contractService
-                .loadContract(contractService.getCONTRACT_ADDRESS(),
-                        contractService.getWeb3j(), contractCredentials);
+    @ResponseBody
+    public String reportNumber(@ModelAttribute ContractService contractService) {
+        String reportedNumber = contractService.getReportedNumber();
 
-        
-        return "A number has been reported: ";
+        // Check if reportedNumber is not null
+        if (reportedNumber != null) {
+            // Set the reported number in the ContractService instance
+            contractService.setReportedNumber(reportedNumber);
+
+            Src_main_resources_solidity_PhoneScamCatcher_sol_PhoneNumberReport phoneNumberReport = contractService
+                    .loadContract(contractService.getCONTRACT_ADDRESS(),
+                            contractService.getWeb3j(), contractCredentials);
+
+            try {
+                TransactionReceipt transactionReceipt = phoneNumberReport.reportNumber(reportedNumber).send();
+                System.out.println(transactionReceipt.getBlockNumber());
+            } catch (Exception e) {
+                System.out.println("Error during reporting a phone number: " + e);
+                // Handle the error, for example, by adding an attribute to the model
+                // and displaying it on the same page
+                return "report_page";
+            }
+        } else {
+            System.out.println("Reported number is null. Handle this case appropriately.");
+            // Handle the case where reportedNumber is null, e.g., display an error message
+            return "report_page";
+        }
+
+        // Redirect to a success page or handle it based on your requirements
+        return "Successfully reported the number: " + contractService.getReportedNumber();
     }
 
 }

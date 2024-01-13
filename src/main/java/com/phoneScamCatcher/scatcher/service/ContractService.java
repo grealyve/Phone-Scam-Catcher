@@ -2,6 +2,7 @@ package com.phoneScamCatcher.scatcher.service;
 
 import com.phoneScamCatcher.scatcher.contracts.Src_main_resources_solidity_PhoneScamCatcher_sol_PhoneNumberReport;
 import lombok.Getter;
+import lombok.Setter;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.http.HttpService;
@@ -9,8 +10,10 @@ import org.web3j.protocol.http.HttpService;
 import java.math.BigInteger;
 
 @Getter
+@Setter
 public class ContractService {
     private final Web3j web3j;
+    private String reportedNumber;
     public ContractService() {
         this.web3j = Web3j.build(new HttpService("http://localhost:7545"));
     }
