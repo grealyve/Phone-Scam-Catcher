@@ -44,7 +44,8 @@ Blockchain project based on Java Spring backend and stores the user data in a My
 - Integration with Ethereum blockchain for secure reporting
 
 ## Model
-This is model diagram of our project. 
+This is model diagram of our project:
+![blockchain_model.png](static%2Fblockchain_model.png)
 
 ## Install
 This project requires Java 21.
