@@ -45,7 +45,7 @@ Blockchain project based on Java Spring backend and stores the user data in a My
 
 ## Model
 This is model diagram of our project.
-![blockchain_model.png](static/blockchain_model.png)
+![blockchain_model.jpg](static%2Fblockchain_model.jpg)
 
 ## Install
 This project requires Java 21.
