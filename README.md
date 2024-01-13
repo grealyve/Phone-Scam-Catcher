@@ -151,6 +151,13 @@ Summary
 ## Examples
 
 ### Ganache
+- Smart Contract
+![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/04457acc-728f-4e2e-a4c0-bed6157276bc)
+![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/b2cb7b27-dfd0-4086-98c4-25b3c4802285)
+
+- Example Written Block 
+![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/4a199fe6-6bdd-48f4-b2d9-13fd693e501f)
+
 
 ## MySql Properties
 application.properties
