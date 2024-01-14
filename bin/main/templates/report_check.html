@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Report Check</title>
+</head>
+<body>
+<form th:action="@{/reportCheck}" method="post" th:object="${blockNumber}">
+    <h2>Report Check Page</h2>
+    <div class="input-box">
+        <i class="fa fa-cube" aria-hidden="true"></i>
+        <!-- Use th:field to bind the input to the model attribute -->
+        <input type="number" th:field="*{blockNumber}" placeholder="Block Number" required>
+    </div>
+    <button type="submit"> Check Block </button>
+</form>
+</body>
+</html>
