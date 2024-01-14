@@ -167,14 +167,24 @@ Summary
 
 ### Home Page
 ``http://localhost:8080/home``
+![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/18c7f652-f2ce-4799-9815-7448de6459c5)
+
 ### Register Page
 ``http://localhost:8080/register``
+![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/48d5bfba-2e45-4480-83b9-14799f9ffd83)
+
 ### Login Page
 ``http://localhost:8080/login``
+![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/38dd48d6-4570-43a9-a304-89540daff694)
+
 ### Report Page
 ``http://localhost:8080/report``
+![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/580b2849-03aa-40d5-b598-353a239b0b29)
+
 ### Report Check Page
 ``http://localhost:8080/reportCheck``
+![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/cc607a29-8ffd-4fca-9eed-958411ae4b4d)
+
 ## Examples
 
 ### Ganache
