@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
@@ -38,10 +39,10 @@ public class UserController {
     // Register page POST method handler
     @PostMapping("/register")
     @ResponseBody
-    public String register(@ModelAttribute User user) {
+    public ModelAndView register(@ModelAttribute User user) {
         System.out.println("Register request: " + user);
         User registeredUser = usersService.registerUser(user.getName(), user.getPassword(), user.getPhoneNumber());
-        return registeredUser == null ? "error!" : "redirect:/login";
+        return registeredUser == null ? new ModelAndView("redirect:/register") : new ModelAndView("redirect:/login");
     }
 
     // Login page GET method handler
@@ -53,13 +54,16 @@ public class UserController {
 
     // Login page POST method handler
     @PostMapping("/login")
-    public String login(@ModelAttribute User user) {
+    @ResponseBody
+    public ModelAndView login(@ModelAttribute User user, Model model) {
         User dbUser = usersService.authenticate(user.getPhoneNumber(), user.getPassword());
         if (dbUser != null) {
-            System.out.println("Successfully loginned" + user.getName());
-            return "report_page";
-        } else
-            return "Failed to login";
+            System.out.println("Successfully loginned: " + dbUser.getName() + "\nPhone Number: " + dbUser.getPhoneNumber());
+            return new ModelAndView("redirect:/report");
+        } else {
+            model.addAttribute("error", "Failed to login user");
+            return new ModelAndView("redirect:/login");
+        }
     }
 
     // Report page GET method handler
