@@ -64,12 +64,12 @@ $ npm install -g truffle
 $ npm install ganache --global
 ```
 
-- Solidity kontratkını derlemek için `solc` kütüphanesi kullanılmalı:
+- Solidity akıllı sözleşmesini derlemek için `solc` kütüphanesi kullanılmalı:
 ```shell
 $ solcjs .\src\main\resources\solidity\PhoneScamCatcher.sol --bin --abi --optimize -o .\src\main\resources\out\
 ```
 
-- `web3j` Java kütüphanesini kullanarak Solidity kontraktını Java koduna çevirme:
+- `web3j` Java kütüphanesini kullanarak Solidity akıllı sözleşmesini Java koduna çevirme:
 ```powershell
               _      _____ _
              | |    |____ (_)
@@ -89,7 +89,7 @@ $ web3j generate solidity -b .\src\main\resources\out\src_main_resources_solidit
 ```java
 implementation 'org.web3j:core:4.10.0'
 ```
-- `Ganache` ile kontraktı bağlayabilmek için şu kodlar kullanılmalı:
+- `Ganache` ile akıllı sözleşmeyi bağlayabilmek için şu kodlar kullanılmalı:
 ```bash
 $ truffle init
 Starting init...
@@ -156,7 +156,7 @@ Summary
 > Total deployments:   1
 > Final cost:          0.000845641821774138 ETH
 ```
-- `PhoneScamCatcher.sol` kontraktının `abi` kodları:
+- `PhoneScamCatcher.sol` aklıllı sözleşmesinin `abi` kodları:
 `````json
 [{"anonymous":false,"inputs":[{"indexed":false,"internalType":"string","name":"phoneNumber","type":"string"},
   {"indexed":false,"internalType":"int256","name":"count","type":"int256"}],"name":"PhoneNumberReported","type":"event"},
@@ -184,11 +184,11 @@ Summary
 ## Örnekler
 
 ### Ganache
-- Smart Contract
+- Akıllı Sözleşme
   ![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/04457acc-728f-4e2e-a4c0-bed6157276bc)
   ![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/b2cb7b27-dfd0-4086-98c4-25b3c4802285)
 
-- Example Written Block
+- Örnek bir Blok
   ![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/4a199fe6-6bdd-48f4-b2d9-13fd693e501f)
 
 
