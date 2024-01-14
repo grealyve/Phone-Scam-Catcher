@@ -98,14 +98,13 @@
     </style>
 </head>
 <body>
-<form th:action="@{/reportCheck}" method="post" th:object="${blockNumber}">
+<form th:action="@{/reportCheck}" method="post" th:object="${checkNumber}">
     <h2>Report Check Page</h2>
     <div class="input-box">
         <i class="fa fa-cube" aria-hidden="true"></i>
-        <!-- Use th:field to bind the input to the model attribute -->
-        <input type="number" th:field="*{blockNumber}" placeholder="Block Number" required>
+        <input id="phoneNumber" type="text" name="phoneNumber" placeholder="Phone Number" required>
     </div>
-    <button type="submit"> Check Block </button>
+    <button type="submit"> Check Number </button>
 </form>
 <img src="pictures/phoneScamCatcher_revised.png" alt="Corner Image" class="corner-image">
 </body>

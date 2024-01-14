@@ -2,8 +2,10 @@ package com.phoneScamCatcher.scatcher.controller;
 
 import com.phoneScamCatcher.scatcher.contracts.Src_main_resources_solidity_PhoneScamCatcher_sol_PhoneNumberReport;
 import com.phoneScamCatcher.scatcher.entity.BlockNumberForm;
+import com.phoneScamCatcher.scatcher.entity.Phone;
 import com.phoneScamCatcher.scatcher.entity.User;
 import com.phoneScamCatcher.scatcher.service.ContractService;
+import com.phoneScamCatcher.scatcher.service.PhonesService;
 import com.phoneScamCatcher.scatcher.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,8 @@ public class UserController {
 
     @Autowired
     private UsersService usersService;
+    @Autowired
+    private PhonesService phonesService;
 
     // Home page GET method handler
     @GetMapping(path = "")
@@ -89,13 +93,14 @@ public class UserController {
                             contractService.getWeb3j(), contractCredentials);
 
             try {
+                phonesService.reportPhoneNumber(reportedNumber);
                 TransactionReceipt transactionReceipt = phoneNumberReport.reportNumber(reportedNumber).send();
-                System.out.println(transactionReceipt.getBlockNumber());
+                System.out.println("Reported Block Hash: " +transactionReceipt.getBlockHash());
             } catch (Exception e) {
                 System.out.println("Error during reporting a phone number: " + e);
                 // Handle the error, for example, by adding an attribute to the model
                 // and displaying it on the same page
-                return "report_page";
+                return "redirect:/report_page";
             }
         } else {
             return "Please enter a valid phone number";
@@ -108,27 +113,25 @@ public class UserController {
     // Report Check page GET method handler
     @GetMapping("/reportCheck")
     public String getReportCheckPage(Model model) {
-        model.addAttribute("blockNumber", new BlockNumberForm());
+        model.addAttribute("checkNumber", new Phone());
         return "report_check";
     }
 
     // Report Check page POST method handler
     @PostMapping("/reportCheck")
     @ResponseBody
-    public String checkReportedBlock(@ModelAttribute BlockNumberForm blockNumberForm) {
-        int blockNumber = blockNumberForm.getBlockNumber();
+    public String checkReportedNumber(@ModelAttribute Phone phone) {
+        String phoneNumber = phone.getPhoneNumber();
+        System.out.println(phoneNumber);
 
-        // Retrieve block information from Ganache
-        String blockInfo;
-        try {
-            blockInfo = contractService.retrieveBlockInfoFromGanache(blockNumber);
-        } catch (IOException e) {
-            System.out.println("Error: " + e);
-            return "Error during checking" + e;
+        if (phoneNumber != null) {
+            phone.setPhoneNumber(phoneNumber);
+            int checkedPhoneNumber = phonesService.checkPhoneNumber(phone.getPhoneNumber());
+
+            return "Report Count: " + checkedPhoneNumber;
         }
 
-
-        return "Block Information: " + blockInfo;
+        return "redirect:/reportCheck";
     }
 
 
