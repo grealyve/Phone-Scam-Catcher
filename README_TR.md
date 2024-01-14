@@ -3,10 +3,10 @@
   <img src="static/PhoneScamCatcher.jpg" width="400px">
 </h1>
 
-<h4 align="center">Reporting and checking scammer phone number tool based on blockchain.</h4>
+<h4 align="center">Blockchain tabanlı dolandırıcı telefon numarası araçlarını raporlama ve kontrol etme.</h4>
 
 # Phone-Scam-Catcher
-Blockchain project based on Java Spring backend and stores the user data in a MySql server.
+Java Spring tabanlı Blockchain projesi ve kullanıcı verilerini bir MySql sunucusunda depolar. Kullanıcılar bir telefon numarasını raporlayabilir ve her telefon numarası bir blok olarak yazılır.
 
 ````powershell
   .   ____          _            __ _ _
@@ -20,41 +20,42 @@ Blockchain project based on Java Spring backend and stores the user data in a My
 
 ## Table of Contents
 <p align="center">
-  <a href="#features">Features</a> •
+  <a href="#özellikler">Özellikler</a> •
   <a href="#model">Model</a> •
-  <a href="#install">Install</a> •
-  <a href="#build">Build</a> •
-  <a href="#web-page-endpoints">Web Page Endpoints</a> •
-  <a href="#examples">Examples</a> •
-  <a href="#mysql-properties">MySql Connection Properties</a> •
-  <a href="#contributing">Contributing</a> •
-  <a href="#license">License</a>
+  <a href="#kurulum">Kurulum</a> •
+  <a href="#oluşturma">Oluşturma</a> •
+  <a href="#web-sitesi">Web Sitesi</a> •
+  <a href="#örnekler">Örnek Bloklar</a> •
+  <a href="#mysql-gereksinimleri">MySql Bağlantı Gereksinimleri</a> •
+  <a href="#katkı">Katkı</a> •
+  <a href="#lisans">Lisans</a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/grealyve/Phone-Scam-Catcher/README.md">English</a>
+  <a href="https://github.com/grealyve/Phone-Scam-Catcher/blob/main/README.md">English</a>
 </p>
 
 ---
 
-## Features
+## Özellikler
 
-- User registration and login
-- Reporting and checking phone numbers for scams
-- Integration with Ethereum blockchain for secure reporting
+- Kullanıcı kaydı ve giriş
+- Dolandırıcılıklara karşı telefon numaralarını raporlamak ve kontrol etmek
+- Güvenli raporlama için Ethereum blockchain ile entegrasyon
 
 ## Model
-This is model diagram of our project.
+- Projemizin model diyagramı:
+
 ![blockchain_model.jpg](static%2Fblockchain_model.jpg)
 
-## Install
-This project requires Java 21.
+## Kurulum
+Bu proje Java 21 gerektirir.
 ````shell
 git clone https://github.com/grealyve/Phone-Scam-Catcher
 ````
 
-## Build
-- These are the required `npm` libraries
+## Oluşturma
+- Gerekli `npm` kütüphaneleri
 ```shell
 $ npm install solc
 
@@ -63,12 +64,12 @@ $ npm install -g truffle
 $ npm install ganache --global
 ```
 
-- To compile the Solidity contract first you need to use `solc` library:
+- Solidity kontratkını derlemek için `solc` kütüphanesi kullanılmalı:
 ```shell
 $ solcjs .\src\main\resources\solidity\PhoneScamCatcher.sol --bin --abi --optimize -o .\src\main\resources\out\
 ```
 
-- To translate the contract's functions to Java code by using `web3j` library:
+- `web3j` Java kütüphanesini kullanarak Solidity kontraktını Java koduna çevirme:
 ```powershell
               _      _____ _
              | |    |____ (_)
@@ -84,11 +85,11 @@ $ web3j generate solidity -b .\src\main\resources\out\src_main_resources_solidit
     -a .\src\main\resources\out\src_main_resources_solidity_PhoneScamCatcher_sol_PhoneNumberReport.abi 
         -o .\src\main\java -p com.phoneScamCatcher.scatcher.contracts
 ```
-- Implementation Java libraries:
+- Java kütüphanesi entegrasyonu:
 ```java
 implementation 'org.web3j:core:4.10.0'
 ```
-- To visualize and connect the contract with `Ganache` use this codes:
+- `Ganache` ile kontraktı bağlayabilmek için şu kodlar kullanılmalı:
 ```bash
 $ truffle init
 Starting init...
@@ -155,7 +156,7 @@ Summary
 > Total deployments:   1
 > Final cost:          0.000845641821774138 ETH
 ```
-- The `abi` of the smart contract named `PhoneScamCatcher.sol`.
+- `PhoneScamCatcher.sol` kontraktının `abi` kodları:
 `````json
 [{"anonymous":false,"inputs":[{"indexed":false,"internalType":"string","name":"phoneNumber","type":"string"},
   {"indexed":false,"internalType":"int256","name":"count","type":"int256"}],"name":"PhoneNumberReported","type":"event"},
@@ -163,19 +164,24 @@ Summary
   {"inputs":[{"internalType":"string","name":"phoneNumber","type":"string"}],"name":"reportNumber","outputs":[],"stateMutability":"nonpayable","type":"function"}]
 `````
 
-## Web Page Endpoints
+## Web Sitesi
 
-### Home Page
+### Ana Sayfa
 ``http://localhost:8080/home``
-### Register Page
+![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/18c7f652-f2ce-4799-9815-7448de6459c5)
+### Kayıt Ol Sayfası
 ``http://localhost:8080/register``
-### Login Page
+![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/48d5bfba-2e45-4480-83b9-14799f9ffd83)
+### Giriş Yap Sayfası
 ``http://localhost:8080/login``
-### Report Page
+![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/38dd48d6-4570-43a9-a304-89540daff694)
+### Raporla Sayfası
 ``http://localhost:8080/report``
-### Report Check Page
+![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/580b2849-03aa-40d5-b598-353a239b0b29)
+### Rapor Kontrol Sayfası
 ``http://localhost:8080/reportCheck``
-## Examples
+![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/cc607a29-8ffd-4fca-9eed-958411ae4b4d)
+## Örnekler
 
 ### Ganache
 - Smart Contract
@@ -186,7 +192,7 @@ Summary
   ![image](https://github.com/grealyve/Phone-Scam-Catcher/assets/41903311/4a199fe6-6bdd-48f4-b2d9-13fd693e501f)
 
 
-## MySql Properties
+## MySql Gereksinimleri
 application.properties
 ````mysql-sql
 spring.datasource.url=jdbc:mysql://localhost:3306/scammerDB
@@ -198,14 +204,14 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 ````
 
-## Ethereum Smart Contract
-The application uses an Ethereum smart contract for securely storing and retrieving reported phone numbers. The smart contract is written in Solidity and is available in the `src/main/resources/solidity/` directory.
+## Ethereum Akıllı Kontrakt
+Uygulama, bildirilen telefon numaralarını güvenli bir şekilde saklamak ve almak için bir Ethereum akıllı sözleşmesi kullanıyor. Akıllı sözleşme Solidity'de yazılmıştır ve 'src/main/resources/solidity/' dizininde mevcuttur.
 
-## Contributing
-Contributions are welcome! If you find any issues or have suggestions for improvement, please feel free to create an issue or submit a pull request.
+## Katkı
+Katkılarınızı bekliyoruz! Herhangi bir sorun bulursanız veya iyileştirme önerileriniz varsa, lütfen sorun oluşturmaktan veya istek göndermekten çekinmeyin.
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Lisans
+Bu proje MIT Lisansı kapsamında lisanslanmıştır; ayrıntılar için LİSANS dosyasına bakın.
 ```shell
-Make sure to customize the placeholders such as `your-username`, add more details about the project's structure, dependencies, and any other relevant information. Additionally, consider adding sections like "Deployment" or "Troubleshooting" based on your project's needs.
+'Kullanıcı adınız' gibi yer tutucuları özelleştirdiğinizden, projenin yapısı, bağımlılıkları ve diğer ilgili bilgiler hakkında daha fazla ayrıntı eklediğinizden emin olun. Ayrıca projenizin ihtiyaçlarına göre "Dağıtım" veya "Sorun Giderme" gibi bölümler eklemeyin.
 ```
