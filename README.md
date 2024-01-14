@@ -5,8 +5,8 @@
 
 <h4 align="center">Reporting and checking scammer phone number tool based on decentralized network.</h4>
 
-# Phone-Scam-Catcher
-Blockchain project based on Java Spring backend and stores the user data in a MySql server. 
+# Phone Scam Catcher
+Blockchain project based on Java Spring backend and stores the user data in a MySql server. Users can report a phone number and every phone number is written a block.
 
 ````powershell
   .   ____          _            __ _ _
@@ -32,7 +32,7 @@ Blockchain project based on Java Spring backend and stores the user data in a My
 </p>
 
 <p align="center">
-  <a href="https://github.com/grealyve/Phone-Scam-Catcher/README_TR.md">Turkish</a>
+  <a href="https://github.com/grealyve/Phone-Scam-Catcher/blob/main/README_TR.md">Turkish</a>
 </p>
 
 ---
