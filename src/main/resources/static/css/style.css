@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: url(https://picsum.photos/3000/2000/?image=1015);
+  background: url(https://picsum.photos/3000/2000/?image=3);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -14,7 +14,7 @@ body::before {
   left: 0;
   width: 25%;
   height: 100%;
-  background-color: #03a9f4;
+  background-color: lightcoral;
   opacity: 0.8;
 }
 
@@ -25,14 +25,14 @@ body::before {
   transform: translate(-50%, -50%);
   width: 350px;
   min-height: 400px;
-  background-color: #fff;
+  background-color: #0000;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
   padding: 50px;
   box-sizing: border-box;
 }
 
 .form h2 {
-  color: #777;
+  color: darkred;
   margin: 0 0 40px;
   padding: 0;
 }
@@ -57,7 +57,7 @@ body::before {
 
 .form .input-box input:focus,
 .form .input-box input:valid {
-  border-bottom-color: #03a9f4;
+  border-bottom-color: darkred;
 }
 
 .form .input-box .fa {
@@ -65,14 +65,14 @@ body::before {
   top: 8px;
   left: 5px;
   font-size: 18px;
-  color: #777;
+  color: darkgrey;
 }
 
 .form .input-box input[type="submit"] {
   border: none;
   cursor: pointer;
-  background-color: #03a9f4;
-  color: #fff;
+  background-color: darkred;
+  color: whitesmoke;
   font-weight: bold;
   transition: 0.5s;
 }
@@ -83,7 +83,7 @@ body::before {
 
 .form a {
   text-decoration: none;
-  color: #777;
+  color: darkgrey;
   margin-top: 20px;
   font-weight: bold;
   display: inline-block;
@@ -92,4 +92,31 @@ body::before {
 
 .form a:hover {
   color: #ff4987;
+}
+
+.form button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: darkred;
+  color: whitesmoke;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.form button:hover {
+  background-color: #ff4987;
+}
+
+.corner-image {
+  position: fixed;
+  right: 10px; 
+  bottom: 10px; 
+  max-width: 100px; 
+  height: auto; 
+  border: 1px solid #fff; 
+  border-radius: 5px; 
 }
