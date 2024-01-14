@@ -59,7 +59,7 @@ public class UserController {
         User dbUser = usersService.authenticate(user.getPhoneNumber(), user.getPassword());
         if (dbUser != null) {
             System.out.println("Successfully loginned: " + dbUser.getName() + "\nPhone Number: " + dbUser.getPhoneNumber());
-            return new ModelAndView("redirect:/report");
+            return new ModelAndView("redirect:/");
         } else {
             model.addAttribute("error", "Failed to login user");
             return new ModelAndView("redirect:/login");
